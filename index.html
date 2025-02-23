@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #030712;
+      color: #f3f4f6;
+    }
+
+    .landing-page {
+      min-height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .gradient-overlay-1 {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, #4f46e5, transparent 70%);
+      opacity: 0.3;
+    }
+
+    .gradient-overlay-2 {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 50%, #818cf8, transparent 70%);
+      opacity: 0.2;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 8rem 1rem;
+    }
+
+    .hero-text {
+      text-align: center;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 1s;
+    }
+
+    .hero-text.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      border-radius: 9999px;
+      background-color: rgba(79, 70, 229, 0.1);
+      color: #a5b4fc;
+    }
+
+    .title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      color: #9ca3af;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    @media (min-width: 640px) {
+      .button-group {
+        flex-direction: row;
+      }
+    }
+
+    .primary-button, .secondary-button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .primary-button {
+      background-color: #4f46e5;
+      color: white;
+    }
+
+    .primary-button:hover {
+      background-color: #4338ca;
+      transform: scale(1.05);
+    }
+
+    .secondary-button {
+      border: 1px solid rgba(79, 70, 229, 0.5);
+      color: #a5b4fc;
+    }
+
+    .secondary-button:hover {
+      background-color: rgba(79, 70, 229, 0.1);
+      transform: scale(1.05);
+    }
+
+    .icon {
+      height: 1.25rem;
+      width: 1.25rem;
+      margin-left: 0.5rem;
+    }
+
+    .bounce {
+      height: 1.5rem;
+      width: 1.5rem;
+      margin: 0 auto;
+      color: rgba(79, 70, 229, 0.5);
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .features {
+      padding: 8rem 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .features-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 5rem;
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .features-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      padding: 2rem;
+      background-color: rgba(17, 24, 39, 0.5);
+      border: 1px solid #1f2937;
+      border-radius: 1rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(79, 70, 229, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .feature-card p {
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      const heroText = document.querySelector('.hero-text');
+      if (heroText) {
+        heroText.classList.add('visible');
+      }
+    };
+  </script>
+</head>
+<body>
+  <div class="landing-page">
+    <header class="hero">
+      <div class="gradient-overlay-1"></div>
+      <div class="gradient-overlay-2"></div>
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="badge">
+            Connecting Talent with Opportunity
+          </div>
+          <h1 class="title">
+            Where Innovation Meets Ambition
+          </h1>
+          <p class="subtitle">
+            The premier platform connecting visionary startups with talented students. Shape the future together.
+          </p>
+          <div class="button-group">
+            <a href="login.html" class="primary-button" style="text-decoration: none;">Launch Your Startup</a>
+
+
+            <a href="login.html" class="primary-button" style="text-decoration: none;">Join as Student</a>
+
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="features">
+      <h2 class="features-title">
+        Why Choose Our Platform?
+      </h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Smart Matching</h3>
+          <p>Our AI-powered system creates perfect connections between startups and student talent.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Real Impact</h3>
+          <p>Make meaningful contributions while gaining invaluable startup experience.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Rapid Growth</h3>
+          <p>Accelerate your journey with mentorship and hands-on startup experience.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

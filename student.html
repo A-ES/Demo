@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Owner</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0113 0%, #18044b 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #cacfd4;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.3s; }
+        .form-group:nth-child(2) { animation-delay: 0.4s; }
+        .form-group:nth-child(3) { animation-delay: 0.5s; }
+        .form-group:nth-child(4) { animation-delay: 0.6s; }
+        .form-group:nth-child(5) { animation-delay: 0.7s; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background: linear-gradient(135deg, #8d10b3, #2980b9);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .projects-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+            animation-delay: 0.8s;
+        }
+
+        .project-card {
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .project-card p {
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .project-card .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .status.not-started { background-color: #f1c40f; color: #fff; }
+        .status.in-progress { background-color: #3498db; color: #fff; }
+        .status.completed { background-color: #2ecc71; color: #fff; }
+
+        .delete-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            margin-top: 15px;
+        }
+
+        .delete-btn:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #3498db;
+            animation: loading 2s ease-in-out infinite;
+        }
+
+        @keyframes loading {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="loading"></div>
+    <div class="container">
+        <h1>Student profile</h1>
+        
+        <div class="form-container">
+            <form id="business details">
+                <div class="form-group">
+                    <label for="business">Name</label>
+                    <input type="text" id="projectName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="business">Resume</label>
+                    <input type="file" id="projectName" required>
+                </div>
+                
+                
+                
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+       
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', loadProjects);
+
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const project = {
+                id: Date.now(),
+                name: document.getElementById('projectName').value,
+                description: document.getElementById('projectDescription').value,
+                startDate: document.getElementById('startDate').value,
+                endDate: document.getElementById('endDate').value,
+                status: document.getElementById('status').value
+            };
+            
+            saveProject(project);
+            this.reset();
+            loadProjects();
+        });
+
+        function saveProject(project) {
+            let projects = JSON.parse(localStorage.getItem('projects')) || [];
+            projects.push(project);
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        function loadProjects() {
+            const projectsList = document.getElementById('projectsList');
+            const projects = JSON.parse(localStorage.getItem('projects')) || [];
+            
+            projectsList.innerHTML = '';
+            
+            projects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.style.animationDelay = `${index * 0.1}s`;
+                
+                const statusClass = project.status.toLowerCase().replace(/\s+/g, '-');
+                
+                projectCard.innerHTML = `
+                    <h3>${project.name}</h3>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <p><strong>Start Date:</strong> ${project.startDate}</p>
+                    <p><strong>End Date:</strong> ${project.endDate}</p>
+                    <span class="status ${statusClass}">${project.status}</span>
+                    <button onclick="deleteProject(${project.id})" class="delete-btn">Delete Project</button>
+                `;
+                
+                projectsList.appendChild(projectCard);
+            });
+        }
+
+        function deleteProject(projectId) {
+            let projects = JSON.parse(localStorage.getItem('projects')) || [];
+            projects = projects.filter(project => project.id !== projectId);
+            localStorage.setItem('projects', JSON.stringify(projects));
+            loadProjects();
+        }
+    </script>
+</body>
+</html>
+

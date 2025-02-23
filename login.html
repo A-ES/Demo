@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Fat Foe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    <div class="title">
+        <div class="container" id="container">
+            <div class="form-container sign-up">
+                <form>
+                    <h1>Create Account</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email to register</span>
+                    <input type="text" placeholder="Name" required />
+                    <input type="email" placeholder="Email" required />
+                    <input type="password" placeholder="Password" required />
+                    <a href="business.html" class="sign-button" style="text-decoration: none;">Sign in</a>
+                </form>
+            </div>
+            <div class="form-container sign-in">
+                <form>
+                    <h1>Student Login</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email and password</span>
+                    <input type="email" placeholder="Email" required />
+                    <input type="password" placeholder="Password" required />
+                    <a href="#">Forgot Your Password?</a>
+                    <a href="student.html" class="sign-button" style="text-decoration: none;">Sign in</a>
+                </form>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Business Login</h1>
+                        <p>Enter your business details to access platform features.</p>
+                        <button class="hidden" id="login">I'm a Student</button>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <h1>Hello, User!</h1>
+                        <p>Register to access all features of our platform.</p>
+                        <button class="hidden" id="register">I'm a Business</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
