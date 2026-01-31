@@ -1,22 +1,18 @@
-hooks_enabled = true
+hooks_enabled = false
+
+# Auto-commit/push/PR after the agent finishes (only when there are changes)
+[github]
+enabled = true
+auto_commit = true
+auto_push = true
+auto_pr = true
+branch = "agent-updates"
+commit_message_template = "Agent: {user_message}"
+pr_title_template = "Agent updates: {user_message}"
+pr_body_template = "Automated changes from coding agent.\n\n**User request:** {user_message}\n\n**Agent summary:** {agent_response}"
 
 [model]
+name = "arcee-ai/trinity-large-preview:free"
 temperature = 0
-
-[[hooks]]
-name='test_before_tool'
-trigger='before_tool'
-command='python3 ./scripts/test_tool.py'
-
-[[hooks]]
-name='test_before_agent'
-trigger='before_agent'
-command='python3 ./scripts/test_tool.py'
-
-[mcp_servers.filesystem]
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem", "/Users/rivaanranawat/Desktop/ai-agent", "/tmp"]
-
-[mcp_servers.filesystem2]
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem222222222222", "/Users/rivaanranawat/Desktop/ai-agent", "/tmp"]
+context_window = 16000
+max_tokens = 1000

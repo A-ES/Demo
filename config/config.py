@@ -83,6 +83,19 @@ class HookConfig(BaseModel):
         return self
 
 
+class GitHubConfig(BaseModel):
+    """Automatically commit, push, and/or create PR after the agent finishes."""
+
+    enabled: bool = False
+    auto_commit: bool = True
+    auto_push: bool = False
+    auto_pr: bool = False
+    branch: str | None = None
+    commit_message_template: str = "Agent: {user_message}"
+    pr_title_template: str = "Agent updates: {user_message}"
+    pr_body_template: str = "Automated changes from coding agent.\n\n**User request:** {user_message}\n\n**Agent summary:** {agent_response}"
+
+
 class Config(BaseModel):
     model: ModelConfig = Field(default_factory=ModelConfig)
     cwd: Path = Field(default_factory=Path.cwd)
@@ -91,6 +104,7 @@ class Config(BaseModel):
     )
     hooks_enabled: bool = False
     hooks: list[HookConfig] = Field(default_factory=list)
+    github: GitHubConfig = Field(default_factory=GitHubConfig)
     approval: ApprovalPolicy = ApprovalPolicy.ON_REQUEST
     max_turns: int = 100
     mcp_servers: dict[str, MCPServerConfig] = Field(default_factory=dict)

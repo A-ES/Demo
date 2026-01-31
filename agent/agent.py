@@ -4,6 +4,7 @@ from agent.events import AgentEvent, AgentEventType
 from agent.session import Session
 from client.response import StreamEventType, TokenUsage, ToolCall, ToolResultMessage
 from config.config import Config
+from github.automation import run_after_agent as run_github_after_agent
 from prompts.system import create_loop_breaker_prompt
 from tools.base import ToolConfirmation
 
@@ -32,6 +33,7 @@ class Agent:
                 final_response = event.data.get("content")
 
         await self.session.hook_system.trigger_after_agent(message, final_response)
+        await run_github_after_agent(self.config, message, final_response)
         yield AgentEvent.agent_end(final_response)
 
     async def _agentic_loop(self) -> AsyncGenerator[AgentEvent, None]:
