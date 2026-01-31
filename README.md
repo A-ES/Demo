@@ -157,3 +157,5 @@ pr_title_template = "Agent updates: {user_message}"
 - Terminal UI with formatted output
 - Command interface: /help, /config, /tools, /mcp, /stats, /save, /resume, /checkpoint, /restore
 - Real-time tool call visualization
+
+Test from agent and final
